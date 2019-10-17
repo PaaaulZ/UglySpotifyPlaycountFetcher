@@ -1,21 +1,21 @@
 # UglySpotifyPlaycountFetcher
 A simple program that scans memory to find a track playcount on Spotify.
 
-**You will need Spotify installed, open and you can't use your computer while this is running. The Spotify window will pop on your screen everytime the software switches to another song**
+**You will need Spotify installed and open while this is running. The Spotify window will pop on your screen for the first song and will blink in the taskbar for every other song**
 
 ## Why?
 
-To build [IndieGuerraBot](https://github.com/PaaaulZ/IndieGuerraBot) I needed a way to find the playcount for a song but unfortunately Spotify doesn't provide one. At first I found a way a way but it involved editing Spotify files and I didn't like it. I wanted something to run a let go without having to think about it or touching Spotify's code.
+To build [IndieGuerraBot](https://github.com/PaaaulZ/IndieGuerraBot) I needed a way to find the playcount for a song but unfortunately Spotify doesn't provide one. At first I found a way but it involved editing Spotify files and I didn't like it. I wanted something to run and let go without having to think about it or touching Spotify's code/files.
 
 ## How does this work?
 
-Honestly I'm not even sure it will work. It's working for me (tested on Windows 10 Pro 10.0.18362 compiling in x86) and that's good.
+Honestly I'm not even sure it will work. It's working for me (tested on Windows 10 Pro 10.0.18362 compiling in x86 and x64) and that's good.
 
 Spotify comunicates with the Hermes protocol and it's packets are encoded. At first I thought about computer vision but that sounded unreliable, so I thought about finding and detouring the function that encodes/decodes packet but:
 
 1) That's too much work.
 2) A software update could break my code.
-3) Is against Spotify's ToS (?)
+3) Is against Spotify's ToS (?).
 
 Since I was thinking about memory then I jumped to the conclusion that I didn't need to work that much. Seeing the playcount on my computer meant that I have it loaded in memory, having it loaded in memory meant that I could take it from there and do whatever I like with it.
 
