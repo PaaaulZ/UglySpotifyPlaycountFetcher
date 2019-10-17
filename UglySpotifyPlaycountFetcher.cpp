@@ -13,7 +13,7 @@ std::string getPlayCountFromStringInMemory(int* address, HANDLE process, MEMORY_
 {
 	// Scans memory to find the playcount given the track URI
 	std::vector<char> buffer;
-	DWORD bytesRead;
+	SIZE_T bytesRead;
 
 	buffer.resize(info.RegionSize);
 	ReadProcessMemory(process, address, &buffer[0], info.RegionSize, &bytesRead);
@@ -63,12 +63,15 @@ std::string findPlayCountStringInMemory(HANDLE process, std::string const& patte
 
 		if (info.State == MEM_COMMIT &&	(info.Type == MEM_MAPPED || info.Type == MEM_PRIVATE) && p != NULL)
 		{
-			DWORD bytes_read;
+			SIZE_T bytes_read;
 			buffer.resize(info.RegionSize);
 			ReadProcessMemory(process, p, &buffer[0], info.RegionSize, &bytes_read);
 			buffer.resize(bytes_read);
 			for (pos = buffer.begin();buffer.end() != (pos = std::search(pos, buffer.end(), pattern.begin(), pattern.end()));++pos)
 			{
+				int* foundAddress = (int*)(p + (pos - buffer.begin()));
+				std::cout << "Addr: " << foundAddress << std::endl;
+				//std::string foundPlayCount = getPlayCountFromStringInMemory(foundAddress, process, info, spotifyTrackURI);
 				std::string foundPlayCount = getPlayCountFromStringInMemory((int*)(p + (pos - buffer.begin())),process,info, spotifyTrackURI);
 				return foundPlayCount;
 			}
