@@ -28,9 +28,9 @@ This program will search for a part (the start) of the response JSON that contai
 
 Seriously? 
 
-1) I only tested this on Windows and works with x86.
-2) You will need Spotify installed, open and you can't use your computer while this is running because the Spotify window will pop on your screen everytime the software switches to another song.
+1) I only tested this on Windows.
+2) You will need Spotify installed and open just for this program. It's also a bit annoying because Spotify will pop open and gain focus on the first song the software asks for and then your taskbar will blink every time the software switches to another song.
 3) The code is a mess and really simple, just like the concept.
-4) It's a bit slow. On my computer it takes 2-3 seconds to get a song's playcount.
+4) It's a bit slow. On my computer it takes 2-3 seconds to get a song's playcount. Maybe in next versions I could start searching from a certain offset in memory to reduce the time it takes to scan.
 
 But it works and it's ok for me, hope it will for you too.
